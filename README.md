@@ -31,18 +31,12 @@ Next-generation visual assistants — smart glasses, embodied agents, always-on 
 
 ## Main Results
 
-We evaluate 17 systems spanning general-purpose MLLMs, video-specific MLLMs, and agentic video frameworks. The strongest model reaches **39.6%** overall — long-horizon memory is far from solved. Per the paper's Table 1; best in each column **bold**, second-best <u>underlined</u>.
-
-**Chance baseline**
+We evaluate 17 systems spanning general-purpose MLLMs, video-specific MLLMs, and agentic video frameworks. The strongest model reaches **39.6%** overall — long-horizon memory is far from solved. Numbers are from the paper's Table 1; best in each column **bold**, second-best <u>underlined</u>.
 
 | Method | Tracking | Counting | Ordering | Linking | Spatial | Activity | Overall |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Random | 19.6 | 16.7 | 11.1 | 17.3 | 19.3 | 19.2 | 16.8 |
-
-**General-purpose MLLMs**
-
-| Method | Tracking | Counting | Ordering | Linking | Spatial | Activity | Overall |
-|---|---:|---:|---:|---:|---:|---:|---:|
+| *General-purpose MLLMs* | | | | | | | |
 | InternVL3.5-8B | 23.0 | 29.0 | 23.0 | 27.0 | 34.0 | 42.0 | 28.0 |
 | Qwen-3-VL-8B | 35.0 | 28.0 | 23.0 | 21.0 | 40.0 | 42.0 | 29.6 |
 | InternVL3.5-38B | 33.0 | 40.0 | 27.0 | 24.0 | 46.0 | 32.0 | 32.6 |
@@ -51,20 +45,12 @@ We evaluate 17 systems spanning general-purpose MLLMs, video-specific MLLMs, and
 | GPT-5 | 29.0 | 42.0 | 20.0 | 18.0 | 32.0 | 28.0 | 27.8 |
 | **Gemini-3-Flash** | **46.0** | 28.0 | <u>36.0</u> | **44.0** | 44.0 | 44.0 | **39.6** |
 | Gemini-3.1-Pro | <u>40.0</u> | 26.0 | **44.0** | <u>33.0</u> | 40.0 | **48.0** | <u>37.4</u> |
-
-**Video-specific MLLMs**
-
-| Method | Tracking | Counting | Ordering | Linking | Spatial | Activity | Overall |
-|---|---:|---:|---:|---:|---:|---:|---:|
+| *Video-specific MLLMs* | | | | | | | |
 | LongVA-7B | 22.0 | 18.0 | 20.0 | 20.0 | 20.0 | 22.0 | 20.6 |
 | InternVideo2.5-8B | 29.0 | 27.0 | 25.0 | 15.0 | 32.0 | 32.0 | 25.6 |
 | VideoLLaMA3-8B | 23.0 | 31.0 | 27.0 | 32.0 | 38.0 | 36.0 | 30.0 |
 | Molmo2-8B | 36.0 | **50.0** | 27.0 | 25.0 | 34.0 | 22.0 | 33.2 |
-
-**Agentic video frameworks**
-
-| Method | Tracking | Counting | Ordering | Linking | Spatial | Activity | Overall |
-|---|---:|---:|---:|---:|---:|---:|---:|
+| *Agentic video frameworks* | | | | | | | |
 | SiLVR | 31.0 | 14.0 | 27.0 | 17.0 | 18.0 | 28.0 | 22.4 |
 | Ego-R1 | 30.0 | 18.0 | 23.0 | 18.0 | <u>48.0</u> | 32.0 | 25.8 |
 | WorldMM | 32.0 | 44.0 | 21.0 | 21.0 | 34.0 | 36.0 | 30.6 |
