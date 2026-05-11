@@ -1,0 +1,50 @@
+[build-system]
+requires = ["uv_build>=0.11.0"]
+build-backend = "uv_build"
+
+[project]
+name = "worldmm"
+version = "0.2.0"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pip",
+    "torch>=2.7.1",
+    "torchcodec>=0.3,<0.8",
+    "torchvision>=0.22.1,<0.24",
+    "huggingface_hub",
+    "transformers>=4.57.6,<5.0.0",
+    "sentence-transformers",
+    "accelerate",
+    "peft",
+    "apex",
+    "flash-attn>=2.8.0.post2",
+    "openai",
+    "tenacity",
+    "faster-whisper",
+    "decord",
+    "pysrt",
+    "qwen-vl-utils",
+    "scikit-image",
+    "opencv-python-headless",
+    "igraph",
+    "wheel",
+    "markupsafe<3.0.3",
+    "hipporag",
+]
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu128"
+
+[tool.uv.sources]
+hipporag = { path = "src/HippoRAG", editable = true }
+torch = { index = "pytorch" }
+torchcodec = { index = "pytorch" }
+torchvision = { index = "pytorch" }
+
+[tool.uv]
+no-build-isolation-package = ['flash-attn']
+
+[tool.uv.extra-build-dependencies]
+flash-attn = ["torch"]
