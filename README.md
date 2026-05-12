@@ -2,7 +2,7 @@
 
 **A Memory-driven Reasoning Benchmark for Long-Horizon Egocentric Video Understanding**
 
-[Project page](https://egomemreason.github.io/) · [Paper](#) · [Benchmark (HF)](https://huggingface.co/datasets/Ted412/EgoMemReason) · [Leaderboard (HF Space)](https://huggingface.co/spaces/Ted412/EgoMemReason)
+[Project page](https://egomemreason.github.io/) · [Paper](https://arxiv.org/abs/2605.09874) · [Benchmark (HF)](https://huggingface.co/datasets/Ted412/EgoMemReason) · [Leaderboard (HF Space)](https://huggingface.co/spaces/Ted412/EgoMemReason)
 
 Ziyang Wang\*, Yue Zhang\*, Shoubin Yu, Ce Zhang, Zengqi Zhao, Jaehong Yoon, Hyunji Lee, Gedas Bertasius, Mohit Bansal
 *UNC Chapel Hill · NTU Singapore* — *Equal contribution*
@@ -145,12 +145,14 @@ The Leaderboard accepts JSON with 500 entries; per-split scores against the held
 ## Citation
 
 ```bibtex
-@article{wang2026egomemreason,
-  title   = {EgoMemReason: A Memory-driven Reasoning Benchmark for Long-Horizon Egocentric Video Understanding},
-  author  = {Wang, Ziyang and Zhang, Yue and Yu, Shoubin and Zhang, Ce and Zhao, Zengqi and
-             Yoon, Jaehong and Lee, Hyunji and Bertasius, Gedas and Bansal, Mohit},
-  year    = {2026},
-  journal = {arXiv preprint}
+@misc{wang2026egomemreasonmemorydrivenreasoningbenchmark,
+      title={EgoMemReason: A Memory-Driven Reasoning Benchmark for Long-Horizon Egocentric Video Understanding},
+      author={Ziyang Wang and Yue Zhang and Shoubin Yu and Ce Zhang and Zengqi Zhao and Jaehong Yoon and Hyunji Lee and Gedas Bertasius and Mohit Bansal},
+      year={2026},
+      eprint={2605.09874},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2605.09874},
 }
 ```
 
