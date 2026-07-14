@@ -1,5 +1,14 @@
 # Dataset
 
+> **⚠️ Benchmark revision — v1.1 (2026-07-13).** The per-question option-letter mapping
+> in `annotations_public.jsonl` has been **reshuffled**. Anyone who downloaded the
+> benchmark **before 2026-07-13** must **re-download** the file — the letters A–J now
+> map to different option strings. Underlying question text and the set of option
+> strings are unchanged, so a model that previously answered the same option content
+> still counts as correct — it just needs to output the *new* letter for that option.
+> Any locally-cached letter-only predictions must be remapped or re-generated before
+> being submitted to the leaderboard.
+
 EgoMemReason is built on top of the [EgoLife](https://egolife-ai.github.io/) week-long egocentric videos. We release **500 multiple-choice questions** (public, no answer keys) plus a frame index that maps `(identity, day, time)` to extracted frames.
 
 ## Where to get it

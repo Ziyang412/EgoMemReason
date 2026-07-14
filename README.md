@@ -4,6 +4,14 @@
 
 [Project page](https://egomemreason.github.io/) · [Paper](https://arxiv.org/abs/2605.09874) · [Benchmark (HF)](https://huggingface.co/datasets/Ted412/EgoMemReason) · [Leaderboard (HF Space)](https://huggingface.co/spaces/Ted412/EgoMemReason)
 
+> **⚠️ Benchmark revision — v1.1 (2026-07-13).** The per-question option-letter mapping
+> in `annotations_public.jsonl` has been **reshuffled**. If you downloaded the benchmark
+> **before 2026-07-13**, please **re-download** it before your next evaluation run —
+> letters A–J now map to different option strings. Question text and the *set* of
+> option strings per question are unchanged, so previously published aggregate scores
+> remain valid; but any locally-stored letter-only predictions must be remapped (or
+> the model re-run) against the new mapping before submitting to the leaderboard.
+
 Ziyang Wang\*, Yue Zhang\*, Shoubin Yu, Ce Zhang, Zengqi Zhao, Jaehong Yoon, Hyunji Lee, Gedas Bertasius, Mohit Bansal
 *UNC Chapel Hill · NTU Singapore* — *Equal contribution*
 
@@ -118,22 +126,27 @@ INPUT_JSON=$EGOMEM_DATA bash run_final_benchmark_500_apr22.sh
 
 Each `eval_*.py` writes a JSON file with one prediction per question. Per-task / overall accuracy is printed at the end of every run. Prediction shards from parallel jobs are merged by `merge_temporal_ordering_eval_shards.py` (under `evaluation/Gemini/` and `evaluation/GPT5/`).
 
-### 4. Submit to the public leaderboard
+### 4. Ask to be added to the public leaderboard
 
-Once you have a prediction file, submit it to the **EgoMemReason Leaderboard** to appear on the public ranking:
+We do **not** run a self-serve submission endpoint — every entry on the [EgoMemReason Leaderboard](https://huggingface.co/spaces/Ted412/EgoMemReason) has been personally scored by the maintainer against the held-out answer key.
 
-**→ https://huggingface.co/spaces/Ted412/EgoMemReason**
+To be added:
 
-Convert any of the reference eval-script outputs to the submission format with a one-liner:
+1. Convert your prediction file to the submission format (one entry per question, all 500):
 
-```python
-import json
-src = json.load(open("results_my_model.json"))
-sub = [{"example_id": r["example_id"], "predicted_answer": r["pred"]} for r in src]
-json.dump(sub, open("submission.json", "w"))
-```
+   ```python
+   import json
+   src = json.load(open("results_my_model.json"))
+   sub = [{"example_id": r["example_id"], "predicted_answer": r["pred"]} for r in src]
+   json.dump(sub, open("submission.json", "w"))
+   ```
 
-The Leaderboard accepts JSON with 500 entries; per-split scores against the held-out answer key are computed automatically. See the **Submit** tab on the Space for the full spec.
+2. Email <ziyangw@cs.unc.edu> with `submission.json` attached, plus:
+   - method name, team name, model size / API tier, video-input modality,
+   - one-sentence method description,
+   - project page URL, arXiv or OpenReview URL.
+
+The maintainer will score against the private answer key and add a row to the public leaderboard within ~5 business days.
 
 ## Adding a New Method
 
