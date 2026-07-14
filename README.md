@@ -2,6 +2,8 @@
 
 **A Memory-driven Reasoning Benchmark for Long-Horizon Egocentric Video Understanding**
 
+*Accepted at **COLM 2026**.*
+
 [Project page](https://egomemreason.github.io/) · [Paper](https://arxiv.org/abs/2605.09874) · [Benchmark (HF)](https://huggingface.co/datasets/Ted412/EgoMemReason) · [Leaderboard (HF Space)](https://huggingface.co/spaces/Ted412/EgoMemReason)
 
 > **⚠️ Benchmark revision — v1.1 (2026-07-13).** The per-question option-letter mapping
@@ -126,27 +128,25 @@ INPUT_JSON=$EGOMEM_DATA bash run_final_benchmark_500_apr22.sh
 
 Each `eval_*.py` writes a JSON file with one prediction per question. Per-task / overall accuracy is printed at the end of every run. Prediction shards from parallel jobs are merged by `merge_temporal_ordering_eval_shards.py` (under `evaluation/Gemini/` and `evaluation/GPT5/`).
 
-### 4. Ask to be added to the public leaderboard
+### 4. Test your model and (optionally) join the leaderboard
 
-We do **not** run a self-serve submission endpoint — every entry on the [EgoMemReason Leaderboard](https://huggingface.co/spaces/Ted412/EgoMemReason) has been personally scored by the maintainer against the held-out answer key.
+Convert your prediction file to the submission format (one entry per question, all 500):
 
-To be added:
+```python
+import json
+src = json.load(open("results_my_model.json"))
+sub = [{"example_id": r["example_id"], "predicted_answer": r["pred"]} for r in src]
+json.dump(sub, open("submission.json", "w"))
+```
 
-1. Convert your prediction file to the submission format (one entry per question, all 500):
+**Get your score** — anyone can score anonymously on the [EgoMemReason Leaderboard Space](https://huggingface.co/spaces/Ted412/EgoMemReason) → **Score** tab. Upload `submission.json` and the Space returns per-split + Overall accuracy against the held-out answer key. The score is shown to you only; nothing is stored and it does not appear on the public leaderboard.
 
-   ```python
-   import json
-   src = json.load(open("results_my_model.json"))
-   sub = [{"example_id": r["example_id"], "predicted_answer": r["pred"]} for r in src]
-   json.dump(sub, open("submission.json", "w"))
-   ```
+**Ask to be listed** — the public leaderboard is curated by hand. To be added, email <ziyangw@cs.unc.edu> with `submission.json` attached, plus:
+- method name, team name, model size / API tier, video-input modality,
+- one-sentence method description,
+- project page URL, arXiv or OpenReview URL.
 
-2. Email <ziyangw@cs.unc.edu> with `submission.json` attached, plus:
-   - method name, team name, model size / API tier, video-input modality,
-   - one-sentence method description,
-   - project page URL, arXiv or OpenReview URL.
-
-The maintainer will score against the private answer key and add a row to the public leaderboard within ~5 business days.
+The maintainer will re-score against the private answer key, sanity-check the metadata, and add a row within ~5 business days.
 
 ## Adding a New Method
 
